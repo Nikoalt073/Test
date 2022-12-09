@@ -178,7 +178,7 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	public var gfSpeed:Int = 1;
-	public var health:Float = 1;
+	public var health:Float;
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
@@ -1094,6 +1094,13 @@ class PlayState extends MusicBeatState
 
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
+
+		switch(songName) {
+			case "tutorial":
+				health = 1.25
+			default:
+				health = 1.0;
+		}
 
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
